@@ -17,14 +17,14 @@ func createKs() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(account.Address.Hex()) // 0x20F8D42FB0F667F2E53930fed426f225752453b3
+	fmt.Println(account.Address.Hex()) // 0xDe95E88936c39A5C81eb8fc101b3557231EFAFCf
 }
 
 func importKs() {
 	ks := keystore.NewKeyStore("./tmp", keystore.StandardScryptN, keystore.StandardScryptP)
 
 	for _, account := range ks.Accounts() {
-		fmt.Println(account.Address.Hex()) // 0x20F8D42FB0F667F2E53930fed426f225752453b3
+		fmt.Println(account.Address.Hex()) // 0xDe95E88936c39A5C81eb8fc101b3557231EFAFCf
 	}
 }
 
