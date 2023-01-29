@@ -47,6 +47,7 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// 接收人的钱包地址
 	toAddress := common.HexToAddress("0xf0046E53d11c6E7a6BAdB4C9E849fCC26509dc16")
 	var data []byte
 	tx := types.NewTransaction(nonce, toAddress, value, gasLimit, gasPrice, data)
