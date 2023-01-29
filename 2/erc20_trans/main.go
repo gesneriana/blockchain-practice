@@ -75,7 +75,7 @@ func main() {
 	data = append(data, common.LeftPadBytes(amount.Bytes(), 32)...)
 
 	// 使用方法估算燃气费
-	gasLime, err := client.EstimateGas(context.Background(), ethereum.CallMsg{
+	gasPrice, err := client.EstimateGas(context.Background(), ethereum.CallMsg{
 		From: fromAddress,
 		To:   &toAddress,
 		Data: data,
@@ -94,9 +94,9 @@ func main() {
 			}
 			return types.SignTx(trans, types.NewEIP155Signer(chainID), privateKey)
 		},
-		Value:    big.NewInt(0), // 这里是代币转账, 所以ETH填0
-		GasPrice: big.NewInt(int64(gasLime)),
-		GasLimit: 3000000, // 推荐设置, 如果一次转账给多个人可能会消耗大量gas
+		Value:    big.NewInt(0),               // 这里是代币转账, 所以ETH填0
+		GasPrice: big.NewInt(int64(gasPrice)), // gas 估算, 可能不准确, 需要在主链上测试才知道, 或者先查看其他的智能合约大概需要多少gas作为参考
+		GasLimit: 3000000,                     // 推荐设置, 如果一次转账给多个人可能会消耗大量gas
 		Context:  context.Background(),
 	}
 	signedTx, err := instance.Transfer(opts, toAddress, amount)
