@@ -68,4 +68,5 @@ func main() {
 
 	// 创建一个未发布的交易, 这个场景不常用,  比如钱包里面没有gas了, 交易失败了,  所以发不出去, 可以先创建交易,  等有了gas再发布
 	fmt.Printf("buf hex: %s\n", hex.EncodeToString(buf.Bytes()))
+	// f865021682520894f0046e53d11c6e7a6badb4c9e849fcc26509dc16865af3107a4000802ea00e77e734f3af5f285e949a03504fb1e9b417f0b4567944412ca0dda9a15302cba07c989cf44c74facbfe60db92309f4c2a17566fde88f7b992b757c33dd4271e1b
 }
